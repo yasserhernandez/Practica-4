@@ -1,0 +1,56 @@
+import numpy as np
+import cv2
+
+img = np.zeros((600,1200,3), dtype = "uint8")
+
+
+#Asignamos algunos tipos de letra a variables que usaremos posteriormente 
+font0 = cv2.FONT_HERSHEY_SIMPLEX
+font1 = cv2.FONT_HERSHEY_PLAIN
+font2 = cv2.FONT_HERSHEY_DUPLEX
+font3 = cv2.FONT_HERSHEY_COMPLEX
+font4 = cv2.FONT_HERSHEY_TRIPLEX
+font5 = cv2.FONT_HERSHEY_SIMPLEX
+font6 = cv2.FONT_HERSHEY_PLAIN
+font7 = cv2.FONT_HERSHEY_DUPLEX
+font8 = cv2.FONT_ITALIC
+
+#Bucle for, escribir 9 veces Hola mundo con diferentes tipos de letra 
+for i in range(9):
+    #Tipo de letra
+    tipoLetra = [font0,font1,font2,font3,font4,font5,font6,font7,font8]
+    
+    #Texto que se mostrara en nuestra imagen 
+    texto = "Hola Mundo"
+    
+    #Tamaño de letra
+    tamañoLetra =1
+    
+    #Color de letra BGR, cambia conforme cambia i
+    #colorLetra = (221-20*i, 256-15*i, 10+50*i)
+
+    #Color de letra BGR, cambia conforme cambia i
+    colorLetra = (180-20*i, 130-15*i, 70+50*i)
+
+    
+    #Grosor de letra, camba a igual que i en multiplos de 4
+    grosorLetra = 2
+    
+    #La ubicación mantiene en 200 el eje X (ancho)
+    # y cambia en multiplos de 200 el eje Y (alto)
+    ubicacion = (500,50+75*i)
+
+    #Escribe el texto en la imagen
+    cv2.putText(img, texto, ubicacion, tipoLetra[i], tamañoLetra, colorLetra, grosorLetra, cv2.LINE_AA)
+
+#Guardar imagen
+cv2.imwrite('Hola_mundo1.png', img)
+
+#Mostrar imagen
+cv2.imshow('hola_mundo',img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+
